@@ -19,7 +19,7 @@ formulir.addEventListener("submit", (e) => {
   if (id === "") {
     // Tambah note
     axios
-      .post("http://localhost:5000/tambah-notes", { judul, isi })
+      .post("https://backendnotes-315193823427.us-central1.run.app/tambah-notes", { judul, isi })
       .then(() => {
         // Bersihin formnya
         elemen_judul.value = "";
@@ -31,7 +31,7 @@ formulir.addEventListener("submit", (e) => {
       .catch((error) => console.log(error.message));
   } else {
     axios
-      .put(`http://localhost:5000/edit-notes/${id}`, { judul, isi })
+      .put(`https://backendnotes-315193823427.us-central1.run.app/edit-notes/${id}`, { judul, isi })
       .then(() => {
         // Bersihin formnya
         elemen_judul.dataset.id = "";
@@ -48,7 +48,7 @@ formulir.addEventListener("submit", (e) => {
 // GET Notes
 async function getNotesdata() {
   try {
-    const { data } = await axios.get("http://localhost:5000/notesdata");
+    const { data } = await axios.get("https://backendnotes-315193823427.us-central1.run.app/notesdata");
     const table = document.querySelector("#table-notes");
     let tampilan = "";
     let no = 1;
@@ -86,7 +86,7 @@ function deleteNotesdata() {
     btn.addEventListener("click", () => {
       const id = btn.dataset.id;
       axios
-        .delete(`http://localhost:5000/delete-notes/${id}`)
+        .delete(`https://backendnotes-315193823427.us-central1.run.app/delete-notes/${id}`)
         .then(() => getNotesdata())
         .catch((error) => console.log(error));
     });
